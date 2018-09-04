@@ -15,4 +15,11 @@ function tribe_events_map_apis() {
 }
 add_action( 'wp_enqueue_scripts', 'tribe_events_map_apis' );
 
+/**
+ * Remove related products output
+ */
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+
+add_filter('woocommerce_product_related_posts_query', '__return_empty_array', 100);
+
 ?>
